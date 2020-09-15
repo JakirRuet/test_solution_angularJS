@@ -13,6 +13,8 @@ function LunchCheckController($scope){
     dishes = $scope.LunchMenu.split(",");
     if(dishes.length > 5){
       document.getElementById('msg').innerHTML = dishes.length + " dishes are listed that's too much.";
+    }else{
+        document.getElementById('msg').innerHTML = dishes.length + " dishes are listed.";
     }
   };
 }
