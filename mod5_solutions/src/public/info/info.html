@@ -1,0 +1,44 @@
+<h1 class="center_align"> Your Information</h1>
+
+<!-- <div ng-if = "infoCtrl.getDetails.length">
+  <div ng-repeat = detail in infoCtrl.getDetails>
+    {{detail.firstName}}
+  </div>
+</div> -->
+<div ng-if="infoCtrl.getDetails.length">
+  <table class="table table-sm table-inverse">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Favorite Menu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat='detail in infoCtrl.getDetails track by $index'>
+      <th scope="row">{{$index+1}}</th>
+      <td>{{detail.firstName}}</td>
+      <td>{{detail.lastName}}</td>
+      <td>{{detail.phoneNumber}}</td>
+      <td>{{detail.email}}</td>
+      <td>
+          <div class="row">
+            <div class="col-sm-5">
+              <img class="img-responsive" width="250" height="150" ng-src="images/menu/{{detail.menuNumber}}.jpg" alt="{{detail.menuNumber}}">
+            </div>
+            <div class="col-sm-7">
+              <h3>{{infoCtrl.MenuItemInfo[$index]["name"]}}</h3>
+              <p>{{infoCtrl.MenuItemInfo[$index]["description"]}}</p>
+            </div>
+          </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class = "alert alert-success" ng-if="infoCtrl.getDetails.length === 0">
+  <p class="center_align">Not Sign-Up Yet?<span><a ui-sref="signup"> Sign Up No</a></span></p>
+</div>

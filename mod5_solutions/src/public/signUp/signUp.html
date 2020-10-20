@@ -1,0 +1,49 @@
+<div class="container">
+  <form name="regForm" novalidate>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label" >First Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="First Name" name="firstName" ng-model="signUpCtrl.user.firstName" required>
+        <span ng-show="regForm.firstName.$touched && regForm.firstName.$invalid && regForm.firstName.$error.required">The first name is required.</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Last Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"  placeholder="Last Name" ng-model="signUpCtrl.user.lastName" ng-model-options="{ updateOn: 'blur' }">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label" >Phone Number</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="phonenumber" placeholder="Provide you US phone number" ng-model="signUpCtrl.user.phoneNumber" required pattern="(\d{3})-(\d{3})-(\d{4})">
+        <span ng-if="regForm.phonenumber.$invalid && regForm.phonenumber.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label" required>Email</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" name="email" placeholder="Email" ng-model="signUpCtrl.user.email" required>
+        <span ng-show="regForm.email.$touched && regForm.email.$invalid">Email is required.</span>
+      <span><small>We will not share your password</small></span></div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Menu Number</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="Menu Number" name="menunumber" ng-model="signUpCtrl.user.menunumber" required>
+        <span ng-show="(regForm.menunumber.$touched && regForm.menunumber.$invalid)">Menu Number is required.</span>
+        <span ng-if="signUpCtrl.isPresent">Menu Number is invalid.</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" ng-disabled="regForm.$invalid" class="btn btn-primary" ng-click="signUpCtrl.saveDetails(signUpCtrl.user)">Sign Up</button>
+      </div>
+    </div>
+  </form>
+  <div class="{{signUpCtrl.class}}" role="alert">
+    {{signUpCtrl.message}}
+  </div>
+</div>
